@@ -64,6 +64,7 @@ import org.thoughtcrime.securesms.util.SqlUtil;
 import org.thoughtcrime.securesms.util.TextSecurePreferences;
 import org.thoughtcrime.securesms.util.Triple;
 import org.thoughtcrime.securesms.util.Util;
+import org.whispersystems.signalservice.internal.push.SignalServiceProtos;
 
 import java.io.ByteArrayInputStream;
 import java.io.File;
@@ -155,8 +156,10 @@ public class SQLCipherOpenHelper extends SQLiteOpenHelper {
   private static final int STICKER_CONTENT_TYPE_CLEANUP     = 75;
   private static final int MENTION_CLEANUP                  = 76;
   private static final int MENTION_CLEANUP_V2               = 77;
+  private static final int REACTION_CLEANUP                 = 78;
+  private static final int CAPABILITIES_REFACTOR            = 79;
 
-  private static final int    DATABASE_VERSION = 77;
+  private static final int    DATABASE_VERSION = 79;
   private static final String DATABASE_NAME    = "signal.db";
 
   private final Context        context;
@@ -1121,6 +1124,19 @@ public class SQLCipherOpenHelper extends SQLiteOpenHelper {
             db.delete("mention", "_id in (" + ids + ")", null);
           }
         }
+      }
+
+      if (oldVersion < REACTION_CLEANUP) {
+        ContentValues values = new ContentValues();
+        values.putNull("reactions");
+        db.update("sms", values, "remote_deleted = ?", new String[] { "1" });
+      }
+
+      if (oldVersion < CAPABILITIES_REFACTOR) {
+        db.execSQL("ALTER TABLE recipient ADD COLUMN capabilities INTEGER DEFAULT 0");
+
+        db.execSQL("UPDATE recipient SET capabilities = 1 WHERE gv2_capability = 1");
+        db.execSQL("UPDATE recipient SET capabilities = 2 WHERE gv2_capability = -1");
       }
 
       db.setTransactionSuccessful();

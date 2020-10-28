@@ -99,9 +99,9 @@
   <string name="BucketedThreadMedia_Yesterday">Igår</string>
   <string name="BucketedThreadMedia_This_week">Denna vecka</string>
   <string name="BucketedThreadMedia_This_month">Denna månad</string>
-  <string name="BucketedThreadMedia_Large">Stor</string>
+  <string name="BucketedThreadMedia_Large">Stora</string>
   <string name="BucketedThreadMedia_Medium">Medel</string>
-  <string name="BucketedThreadMedia_Small">Liten</string>
+  <string name="BucketedThreadMedia_Small">Små</string>
   <!--CallScreen-->
   <string name="CallScreen_Incoming_call">Inkommande samtal</string>
   <!--CameraActivity-->
@@ -286,7 +286,7 @@
   <string name="ConversationFragment_deleting_messages">Tar bort meddelanden…</string>
   <string name="ConversationFragment_delete_for_me">Ta bort för mig</string>
   <string name="ConversationFragment_delete_for_everyone">Ta bort för alla</string>
-  <string name="ConversationFragment_this_message_will_be_permanently_deleted_for_everyone">Detta meddelande tas bort permanent för alla i konversationen. Medlemmar kan se att du har tagit bort ett meddelande.</string>
+  <string name="ConversationFragment_this_message_will_be_deleted_for_everyone_in_the_conversation">Det här meddelandet tas bort för alla i konversationen om de har en ny version av Signal. De kommer att kunna se att du har tagit bort ett meddelande.</string>
   <string name="ConversationFragment_quoted_message_not_found">Hittade inte originalmeddelandet.</string>
   <string name="ConversationFragment_quoted_message_no_longer_available">Originalmeddelandet inte längre tillgänglig.</string>
   <string name="ConversationFragment_failed_to_open_message">Det gick inte att öppna meddelandet</string>
@@ -335,6 +335,32 @@
   <string name="CreateProfileActivity_set_up_your_profile">Ställ in din profil</string>
   <string name="CreateProfileActivity_signal_profiles_are_end_to_end_encrypted">Din profil är ände-till-ände-krypterad. Din profil och ändringar av den kommer att synas för dina kontakter, när du initierar eller accepterar nya konversationer och när du går med i nya grupper.</string>
   <string name="CreateProfileActivity_set_avatar_description">Ställ in avatar</string>
+  <!--ChooseBackupFragment-->
+  <string name="ChooseBackupFragment__restore_from_backup">Återställ från säkerhetskopia?</string>
+  <string name="ChooseBackupFragment__restore_your_messages_and_media">Återställ dina meddelanden och media från en lokal säkerhetskopia. Om du inte återställer nu kommer du inte att kunna återställa senare.</string>
+  <string name="ChooseBackupFragment__icon_content_description">Återställ från säkerhetskopieringsikonen</string>
+  <string name="ChooseBackupFragment__choose_backup">Välj säkerhetskopia</string>
+  <string name="ChooseBackupFragment__learn_more">Läs mer</string>
+  <!--RestoreBackupFragment-->
+  <string name="RestoreBackupFragment__restore_complete">Återställningen är klar</string>
+  <string name="RestoreBackupFragment__to_continue_using_backups_please_choose_a_folder">Välj en mapp för att fortsätta använda säkerhetskopior. Nya säkerhetskopior sparas på den här platsen.</string>
+  <string name="RestoreBackupFragment__choose_folder">Välj mapp</string>
+  <string name="RestoreBackupFragment__not_now">Inte nu</string>
+  <!--BackupsPreferenceFragment-->
+  <string name="BackupsPreferenceFragment__chat_backups">Säkerhetskopior av konversationer</string>
+  <string name="BackupsPreferenceFragment__backups_are_encrypted_with_a_passphrase">Säkerhetskopior krypteras med ett lösenord och lagras på din enhet.</string>
+  <string name="BackupsPreferenceFragment__create_backup">Skapa säkerhetskopia</string>
+  <string name="BackupsPreferenceFragment__last_backup">Senaste säkerhetskopia: %1$s</string>
+  <string name="BackupsPreferenceFragment__backup_folder">Säkerhetskopieringsmapp</string>
+  <string name="BackupsPreferenceFragment__verify_backup_passphrase">Verifiera säkerhetskopians lösenord</string>
+  <string name="BackupsPreferenceFragment__test_your_backup_passphrase">Testa ditt lösenord för säkerhetskopian och kontrollera att den matchar</string>
+  <string name="BackupsPreferenceFragment__turn_on">Aktivera</string>
+  <string name="BackupsPreferenceFragment__turn_off">Inaktivera</string>
+  <string name="BackupsPreferenceFragment__to_restore_a_backup">För att återställa en säkerhetskopia, installera en ny kopia av Signal. Öppna appen och tryck på \"Återställ säkerhetskopia\" och leta reda på en säkerhetskopia. %1$s</string>
+  <string name="BackupsPreferenceFragment__learn_more">Läs mer</string>
+  <string name="BackupsPreferenceFragment__in_progress">Pågående…</string>
+  <string name="BackupsPreferenceFragment__d_so_far">%1$d hittills…</string>
+  <string name="BackupsPreferenceFragment_signal_requires_external_storage_permission_in_order_to_create_backups">Signal behöver behörigheten Lagring för att skapa säkerhetskopior men den har avvisats permanent. Vänligen fortsätt till inställningsmenyn för Appar och aviseringar, välj \"Behörigheter\" och aktivera \"Lagring\".</string>
   <!--CustomDefaultPreference-->
   <string name="CustomDefaultPreference_using_custom">Använder anpassade: %s</string>
   <string name="CustomDefaultPreference_using_default">Använder standard: %s</string>
@@ -372,10 +398,16 @@
   <string name="DocumentView_unnamed_file">Namnlös fil</string>
   <!--DozeReminder-->
   <string name="DozeReminder_optimize_for_missing_play_services">Optimera för avsaknad av Play-tjänster</string>
-  <string name="DozeReminder_this_device_does_not_support_play_services_tap_to_disable_system_battery">Denna enhet stödjer inte Play-tjänster. Tryck för att slå av systemets batterioptimeringar som förhindrar Signal från att ta emot meddelanden medan den är inaktiv.</string>
+  <string name="DozeReminder_this_device_does_not_support_play_services_tap_to_disable_system_battery">Enheten stöder inte Play-tjänster. Tryck för att inaktivera systembatterioptimeringar som hindrar Signal från att hämta meddelanden vid inaktivitet.</string>
   <!--ExpiredBuildReminder-->
   <string name="ExpiredBuildReminder_this_version_of_signal_has_expired">Denna version av Signal har gått ut. Uppdatera nu för att skicka och ta emot meddelanden.</string>
   <string name="ExpiredBuildReminder_update_now">Uppdatera nu</string>
+  <!--PendingGroupJoinRequestsReminder-->
+  <plurals name="PendingGroupJoinRequestsReminder_d_pending_member_requests">
+    <item quantity="one">%d väntande medlemsförfrågan.</item>
+    <item quantity="other">%d väntande medlemsförfrågningar.</item>
+  </plurals>
+  <string name="PendingGroupJoinRequestsReminder_view">Visa</string>
   <!--ShareActivity-->
   <string name="ShareActivity_share_with">Dela med</string>
   <string name="ShareActivity_multiple_attachments_are_only_supported">Flera bilagor stöds endast för bilder och videoklipp</string>
@@ -526,6 +558,9 @@
     <item quantity="one">%d medlem tillagd.</item>
     <item quantity="other">%d medlemmar tillagda.</item>
   </plurals>
+  <string name="ManageGroupActivity_only_admins_can_enable_or_disable_the_sharable_group_link">Endast administratörer kan aktivera eller inaktivera den delbara grupplänken.</string>
+  <string name="ManageGroupActivity_only_admins_can_enable_or_disable_the_option_to_approve_new_members">Endast administratörer kan aktivera eller inaktivera alternativet att godkänna nya medlemmar.</string>
+  <string name="ManageGroupActivity_only_admins_can_reset_the_sharable_group_link">Endast administratörer kan återställa den delbara grupplänken.</string>
   <string name="ManageGroupActivity_you_dont_have_the_rights_to_do_this">Du har inte rätten att göra detta</string>
   <string name="ManageGroupActivity_not_capable">Någon som du har lagt till stöder inte nya grupper och behöver uppdatera Signal</string>
   <string name="ManageGroupActivity_failed_to_update_the_group">Det gick inte att uppdatera gruppen</string>
@@ -768,16 +803,14 @@
   <string name="MessageRecord_left_group">Du har lämnat gruppen.</string>
   <string name="MessageRecord_you_updated_group">Du uppdaterade gruppen.</string>
   <string name="MessageRecord_the_group_was_updated">Gruppen uppdaterades.</string>
-  <string name="MessageRecord_you_called">Du ringde</string>
-  <string name="MessageRecord_called_you">Kontakt ringde</string>
-  <string name="MessageRecord_missed_call">Missat samtal</string>
+  <string name="MessageRecord_you_called_date">Du ringde · %1$s</string>
+  <string name="MessageRecord_missed_call_date">Missat samtal · %1$s</string>
   <string name="MessageRecord_s_updated_group">%s uppdaterade gruppen.</string>
-  <string name="MessageRecord_s_called_you">%s ringde dig</string>
+  <string name="MessageRecord_s_called_you_date">%1$s ringde dig · %2$s</string>
   <string name="MessageRecord_called_s">Ringde %s</string>
-  <string name="MessageRecord_missed_call_from">Missat samtal från %s</string>
   <string name="MessageRecord_s_joined_signal">%s finns på Signal!</string>
-  <string name="MessageRecord_you_disabled_disappearing_messages">Du stängde av att meddelanden försvinner.</string>
-  <string name="MessageRecord_s_disabled_disappearing_messages">%1$s stängde av att meddelanden försvinner.</string>
+  <string name="MessageRecord_you_disabled_disappearing_messages">Du inaktiverade försvinnande meddelanden.</string>
+  <string name="MessageRecord_s_disabled_disappearing_messages">%1$s inaktiverade försvinnande meddelanden.</string>
   <string name="MessageRecord_you_set_disappearing_message_time_to_s">Du ställde in tidsgränsen för att försvinnande meddelanden till %1$s.</string>
   <string name="MessageRecord_s_set_disappearing_message_time_to_s">%1$s ställde in tidsgränsen för försvinnande meddelanden till %2$s. </string>
   <string name="MessageRecord_disappearing_message_time_set_to_s">Den försvinnande meddelandetidtagaren har ställts in till %1$s.</string>
@@ -873,6 +906,12 @@
   <string name="MessageRecord_the_group_link_has_been_turned_on_with_admin_approval_off">Grupplänken har aktiverats med administratörsgodkännande av.</string>
   <string name="MessageRecord_the_group_link_has_been_turned_on_with_admin_approval_on">Grupplänken har aktiverats med godkännande av administratör på.</string>
   <string name="MessageRecord_the_group_link_has_been_turned_off">Grupplänken har inaktiverats.</string>
+  <string name="MessageRecord_you_turned_off_admin_approval_for_the_group_link">Du inaktiverade administratörsgodkännande för grupplänken.</string>
+  <string name="MessageRecord_s_turned_off_admin_approval_for_the_group_link">%1$s inaktiverade administratörsgodkännande för grupplänken.</string>
+  <string name="MessageRecord_the_admin_approval_for_the_group_link_has_been_turned_off">Administratörsgodkännandet för grupplänken har inaktiverats.</string>
+  <string name="MessageRecord_you_turned_on_admin_approval_for_the_group_link">Du aktiverade administratörsgodkännande för grupplänken.</string>
+  <string name="MessageRecord_s_turned_on_admin_approval_for_the_group_link">%1$s aktiverat administratörsgodkännande för grupplänken.</string>
+  <string name="MessageRecord_the_admin_approval_for_the_group_link_has_been_turned_on">Administratörsgodkännandet för grupplänken har aktiverats.</string>
   <!--GV2 group link reset-->
   <string name="MessageRecord_you_reset_the_group_link">Du återställer grupplänken.</string>
   <string name="MessageRecord_s_reset_the_group_link">%1$s återställde grupplänken.</string>
@@ -903,12 +942,16 @@
   <string name="MessageRecord_you_marked_your_safety_number_with_s_unverified_from_another_device">Du markerade ditt säkerhetsnummer med %s som overifierat från en annan enhet</string>
   <!--MessageRequestBottomView-->
   <string name="MessageRequestBottomView_accept">Acceptera</string>
+  <string name="MessageRequestBottomView_continue">Fortsätt</string>
   <string name="MessageRequestBottomView_delete">Ta bort</string>
   <string name="MessageRequestBottomView_block">Blockera</string>
   <string name="MessageRequestBottomView_unblock">Sluta blockera</string>
   <string name="MessageRequestBottomView_do_you_want_to_let_s_message_you_they_wont_know_youve_seen_their_messages_until_you_accept">Låt %1$s meddela dig och dela ditt namn och foto med dem? De vet inte att du har sett deras meddelande förrän du accepterar.</string>
   <string name="MessageRequestBottomView_do_you_want_to_let_s_message_you_wont_receive_any_messages_until_you_unblock_them">Låt %1$s meddela dig och dela ditt namn och foto med dem? Du får inte några meddelanden förrän du har slutat blockerat dem.</string>
+  <string name="MessageRequestBottomView_continue_your_conversation_with_this_group_and_share_your_name_and_photo">Fortsätta din konversation med den här gruppen och dela ditt namn och foto med dess medlemmar?</string>
+  <string name="MessageRequestBottomView_continue_your_conversation_with_s_and_share_your_name_and_photo">Fortsätt din konversation med %1$s och dela ditt namn och foto med dem?</string>
   <string name="MessageRequestBottomView_do_you_want_to_join_this_group_they_wont_know_youve_seen_their_messages_until_you_accept">Gå med i denna grupp och dela ditt namn och foto med dess medlemmar? De kommer inte att veta att du har sett deras meddelanden förrän du accepterar.</string>
+  <string name="MessageRequestBottomView_join_this_group_they_wont_know_youve_seen_their_messages_until_you_accept">Gå med i den här gruppen? De vet inte att du har sett deras meddelanden förrän du accepterar det.</string>
   <string name="MessageRequestBottomView_unblock_this_group_and_share_your_name_and_photo_with_its_members">Ta bort blockeringen av denna grupp och dela ditt namn och foto med dess medlemmar? Du får inte några meddelanden förrän du har blockerat dem.</string>
   <string name="MessageRequestProfileView_member_of_one_group">Medlem av %1$s</string>
   <string name="MessageRequestProfileView_member_of_two_groups">Medlem av %1$s och %2$s</string>
@@ -995,7 +1038,7 @@
   <string name="PinRestoreLockedFragment_create_new_pin">Skapa ny PIN-kod</string>
   <!--PinOptOutDialog-->
   <string name="PinOptOutDialog_warning">Varning</string>
-  <string name="PinOptOutDialog_if_you_disable_the_pin_you_will_lose_all_data">Om du inaktiverar PIN-koden kommer du att förlora alla data när du registrerar om Signal om du inte säkerhetskopierar och återställer manuellt. Du kan inte slå på registreringslåset medan PIN-koden är inaktiverad.</string>
+  <string name="PinOptOutDialog_if_you_disable_the_pin_you_will_lose_all_data">Om du inaktiverar PIN-koden kommer du att förlora alla data när du registrerar om Signal om du inte säkerhetskopierar och återställer manuellt. Du kan inte aktivera registreringslåset medan PIN-koden är inaktiverad.</string>
   <string name="PinOptOutDialog_disable_pin">Inaktivera PIN-koden</string>
   <!--RatingManager-->
   <string name="RatingManager_rate_this_app">Betygsätt denna app</string>
@@ -1068,6 +1111,7 @@ angav (%s) är ogiltigt.</string>
   <string name="RegistrationActivity_more_information">Mer information</string>
   <string name="RegistrationActivity_less_information">Mindre information</string>
   <string name="RegistrationActivity_signal_needs_access_to_your_contacts_and_media_in_order_to_connect_with_friends">Signal behöver åtkomst till dina kontakter och media för att få kontakt med vänner, utbyta meddelanden och ringa säkra samtal</string>
+  <string name="RegistrationActivity_signal_needs_access_to_your_contacts_in_order_to_connect_with_friends">Signal behöver åtkomst till dina kontakter för att kunna ansluta till vänner, utbyta meddelanden och ringa säkra samtal</string>
   <string name="RegistrationActivity_rate_limited_to_service">Du har gjort för många försök att registrera detta nummer. Vänligen försök igen senare.</string>
   <string name="RegistrationActivity_unable_to_connect_to_service">Det går inte att ansluta till tjänsten. Vänligen kontrollera nätverksanslutning och försök igen.</string>
   <string name="RegistrationActivity_to_easily_verify_your_phone_number_signal_can_automatically_detect_your_verification_code">För att enkelt verifiera ditt telefonnummer kan Signal automatiskt detektera din verifieringskod om du tillåter Signal att se SMS-meddelanden.</string>
@@ -1089,11 +1133,11 @@ angav (%s) är ogiltigt.</string>
   <string name="RegistrationActivity_country_code_description">Landskod</string>
   <string name="RegistrationActivity_call">Ring</string>
   <!--RegistrationLockV2Dialog-->
-  <string name="RegistrationLockV2Dialog_turn_on_registration_lock">Slå på registreringslås?</string>
-  <string name="RegistrationLockV2Dialog_turn_off_registration_lock">Slå av registreringslås?</string>
+  <string name="RegistrationLockV2Dialog_turn_on_registration_lock">Aktivera registreringslåset?</string>
+  <string name="RegistrationLockV2Dialog_turn_off_registration_lock">Inaktivera registreringslåset?</string>
   <string name="RegistrationLockV2Dialog_if_you_forget_your_signal_pin_when_registering_again">Om du glömmer din PIN-kod när du registrerar dig med Signal igen, kommer du att vara utelåst från ditt konto i 7 dagar. </string>
-  <string name="RegistrationLockV2Dialog_turn_on">Slå på</string>
-  <string name="RegistrationLockV2Dialog_turn_off">Slå av</string>
+  <string name="RegistrationLockV2Dialog_turn_on">Aktivera</string>
+  <string name="RegistrationLockV2Dialog_turn_off">Inaktivera</string>
   <!--RevealableMessageView-->
   <string name="RevealableMessageView_view_photo">Visa foto</string>
   <string name="RevealableMessageView_view_video">Visa video</string>
@@ -1245,6 +1289,7 @@ Tog emot meddelande för nyckelutbyte för ogiltig protokollversion.</string>
   <string name="VerifyIdentityActivity_no_safety_number_to_compare_was_found_in_the_clipboard">Inga säkerhetsnummer att jämföra med hittades i urklipp</string>
   <string name="VerifyIdentityActivity_signal_needs_the_camera_permission_in_order_to_scan_a_qr_code_but_it_has_been_permanently_denied">Signal behöver behörigheten Kamera för att skanna QR-koder men den har avvisats permanent. Vänligen fortsätt till inställningsmenyn för Appar och aviseringar, välj \"Behörigheter\" och aktivera \"Kamera\".</string>
   <string name="VerifyIdentityActivity_unable_to_scan_qr_code_without_camera_permission">Det går inte att skanna en QR-kod utan behörigheten Kamera</string>
+  <string name="VerifyIdentityActivity_you_must_first_exchange_messages_in_order_to_view">Du måste först utbyta meddelanden för att kunna se %1$ss säkerhetsnummer.</string>
   <!--ViewOnceMessageActivity-->
   <!--AudioView-->
   <!--MessageDisplayHelper-->
@@ -1262,7 +1307,7 @@ Tog emot meddelande för nyckelutbyte för ogiltig protokollversion.</string>
   <string name="ApplicationMigrationService_system_database_import_is_complete">Signals import av databasen är klar.</string>
   <!--KeyCachingService-->
   <string name="KeyCachingService_signal_passphrase_cached">Tryck för att öppna.</string>
-  <string name="KeyCachingService_signal_passphrase_cached_with_lock">Tryck för att öppna, tryck på låset för att stänga.</string>
+  <string name="KeyCachingService_signal_passphrase_cached_with_lock">Tryck för att öppna eller tryck på låset för att stänga.</string>
   <string name="KeyCachingService_passphrase_cached">Signal är olåst</string>
   <string name="KeyCachingService_lock">Lås Signal</string>
   <!--MediaPreviewActivity-->
@@ -1285,7 +1330,7 @@ Tog emot meddelande för nyckelutbyte för ogiltig protokollversion.</string>
   <string name="MessageNotifier_error_delivering_message">Fel vid leverans av meddelande.</string>
   <string name="MessageNotifier_mark_all_as_read">Markera alla som lästa</string>
   <string name="MessageNotifier_mark_read">Läst</string>
-  <string name="MessageNotifier_turn_off_these_notifications">Slå av dessa aviseringar</string>
+  <string name="MessageNotifier_turn_off_these_notifications">Inaktivera dessa aviseringar</string>
   <string name="MessageNotifier_media_message">Mediameddelande</string>
   <string name="MessageNotifier_sticker">Klistermärke</string>
   <string name="MessageNotifier_view_once_photo">Visa-en-gång foto</string>
@@ -1306,7 +1351,7 @@ Tog emot meddelande för nyckelutbyte för ogiltig protokollversion.</string>
   <string name="MessageNotifier_reacted_s_to_your_view_once_video">Reagerade %1$s på ditt visa-en-gång video.</string>
   <string name="MessageNotifier_reacted_s_to_your_sticker">Reagerade %1$s på dina klistermärken.</string>
   <string name="MessageNotifier_this_message_was_deleted">Det här meddelandet togs bort.</string>
-  <string name="TurnOffContactJoinedNotificationsActivity__turn_off_contact_joined_signal">Slå av Signal-aviseringar när kontakter ansluter sig? Du kan aktivera dem igen i Signal &gt; Inställningar &gt; Aviseringar.</string>
+  <string name="TurnOffContactJoinedNotificationsActivity__turn_off_contact_joined_signal">Inaktivera Signal-aviseringar när kontakter ansluter sig? Du kan aktivera dem igen i Signal &gt; Inställningar &gt; Aviseringar.</string>
   <!--Notification Channels-->
   <string name="NotificationChannel_messages">Standard</string>
   <string name="NotificationChannel_calls">Samtal</string>
@@ -1317,6 +1362,7 @@ Tog emot meddelande för nyckelutbyte för ogiltig protokollversion.</string>
   <string name="NotificationChannel_other">Övrigt</string>
   <string name="NotificationChannel_group_messages">Meddelanden</string>
   <string name="NotificationChannel_missing_display_name">Okänd</string>
+  <string name="NotificationChannel_voice_notes">Röstanteckningar</string>
   <!--ProfileEditNameFragment-->
   <string name="ProfileEditNameFragment_successfully_set_profile_name">Profilnamn angivet.</string>
   <string name="ProfileEditNameFragment_encountered_a_network_error">Stött på ett nätverksfel.</string>
@@ -1417,9 +1463,15 @@ Tog emot meddelande för nyckelutbyte för ogiltig protokollversion.</string>
   <string name="ContactSelectionListFragment_error_retrieving_contacts_check_your_network_connection">Ett fel inträffade med att hämta kontakter, kontrollera din nätverksanslutning</string>
   <string name="ContactSelectionListFragment_username_not_found">Användarnamn hittades inte</string>
   <string name="ContactSelectionListFragment_s_is_not_a_signal_user">\"%1$s\" är inte en Signal-användare. Vänligen kontrollera användarnamnet och försök igen.</string>
-  <string name="ContactSelectionListFragment_okay">Okej</string>
-  <string name="ContactSelectionListFragment_the_group_is_full">Gruppen är full</string>
   <string name="ContactSelectionListFragment_you_do_not_need_to_add_yourself_to_the_group">Du behöver inte lägga till dig själv i gruppen</string>
+  <string name="ContactSelectionListFragment_maximum_group_size_reached">Maximal gruppstorlek uppnådd</string>
+  <string name="ContactSelectionListFragment_signal_groups_can_have_a_maximum_of_d_members">Signalgrupper kan ha högst %1$d medlemmar.</string>
+  <string name="ContactSelectionListFragment_recommended_member_limit_reached">Rekommenderad medlemsgräns uppnådd</string>
+  <string name="ContactSelectionListFragment_signal_groups_perform_best_with_d_members_or_fewer">Signal-grupper fungerar bäst med %1$d medlemmar eller färre. Om du lägger till fler medlemmar kommer förseningar att skicka och ta emot meddelanden.</string>
+  <plurals name="ContactSelectionListFragment_d_members">
+    <item quantity="one">%1$d medlem</item>
+    <item quantity="other">%1$d medlemmar</item>
+  </plurals>
   <!--blocked_contacts_fragment-->
   <string name="blocked_contacts_fragment__no_blocked_contacts">Inga blockerade kontakter</string>
   <!--contact_selection_list_fragment-->
@@ -1794,7 +1846,7 @@ Tog emot meddelande för nyckelutbyte för ogiltig protokollversion.</string>
   <string name="preferences__theme">Tema</string>
   <string name="preferences__disable_pin">Inaktivera PIN-koden</string>
   <string name="preferences__enable_pin">Aktivera PIN-koden</string>
-  <string name="preferences__if_you_disable_the_pin_you_will_lose_all_data">Om du inaktiverar PIN-koden kommer du att förlora alla data när du registrerar om Signal om du inte säkerhetskopierar och återställer manuellt. Du kan inte slå på registreringslåset medan PIN-koden är inaktiverad.</string>
+  <string name="preferences__if_you_disable_the_pin_you_will_lose_all_data">Om du inaktiverar PIN-koden kommer du att förlora alla data när du registrerar om Signal om du inte säkerhetskopierar och återställer manuellt. Du kan inte aktivera registreringslåset medan PIN-koden är inaktiverad.</string>
   <string name="preferences__pins_keep_information_stored_with_signal_encrypted_so_only_you_can_access_it">PIN-koden håller information lagrad med Signal krypterad så att du bara kan komma åt den. Din profil, inställningar och kontakter kommer att återställas när du installerar om. Du behöver inte din PIN-kod för att öppna appen.</string>
   <string name="preferences__system_default">Systemets standardinställning</string>
   <string name="preferences__default">Standard</string>
@@ -1810,7 +1862,7 @@ Tog emot meddelande för nyckelutbyte för ogiltig protokollversion.</string>
   <string name="preferences__if_read_receipts_are_disabled_you_wont_be_able_to_see_read_receipts">Om läskvitton är inaktiverade kommer du inte att kunna se läskvitton från andra.</string>
   <string name="preferences__typing_indicators">Skrivindikatorer</string>
   <string name="preferences__if_typing_indicators_are_disabled_you_wont_be_able_to_see_typing_indicators">Om skrivindikatorer är inaktiverade kommer du inte att kunna se skrivindikatorer från andra.</string>
-  <string name="preferences__request_keyboard_to_disable_personalized_learning">Begär att tangentbordet stänger av personlig inlärning</string>
+  <string name="preferences__request_keyboard_to_disable_personalized_learning">Begär att tangentbordet inaktiverar personlig inlärning</string>
   <string name="preferences_app_protection__blocked_contacts">Blockerade kontakter</string>
   <string name="preferences_chats__when_using_mobile_data">Vid användning av mobildata</string>
   <string name="preferences_chats__when_using_wifi">Vid användning av Wi-Fi</string>
@@ -2107,7 +2159,7 @@ Tog emot meddelande för nyckelutbyte för ogiltig protokollversion.</string>
   <string name="ResearchMegaphoneDialog_we_believe_in_privacy"><![CDATA[<p><b>Vi tror på integritet.</b></p><p>Signal spårar inte dig och samlar inte in dina uppgifter. För att förbättra Signal för alla förlitar vi oss på användarrespons, <b>och vi skulle vilja få din.</b></p><p>Vi genomför en undersökning för att förstå hur du använder Signal. Vår undersökning samlar inte in några uppgifter som kommer att identifiera dig. Om du är intresserad av att dela ytterligare åsikter har du möjlighet att ge kontaktinformation.</p><p>Om du har några minuter och respons att erbjuda skulle vi gärna höra från dig.</p>]]></string>
   <string name="ResearchMegaphoneDialog_take_the_survey">Ta undersökningen</string>
   <string name="ResearchMegaphoneDialog_no_thanks">Nej tack</string>
-  <string name="ResearchMegaphoneDialog_the_survey_is_hosted_by_surveygizmo_at_the_secure_domain">Undersökningen anordnas av Surveygizmo på den säkra domänen surveys.signalusers.org</string>
+  <string name="ResearchMegaphoneDialog_the_survey_is_hosted_by_alchemer_at_the_secure_domain">Undersökningen anordnas av Alchemer på den säkra domänen surveys.signalusers.org</string>
   <!--transport_selection_list_item-->
   <string name="transport_selection_list_item__transport_icon">Transportikon</string>
   <string name="ConversationListFragment_loading">Hämtar in…</string>
@@ -2123,6 +2175,8 @@ Tog emot meddelande för nyckelutbyte för ogiltig protokollversion.</string>
   <string name="PushDecryptJob_unlock_to_view_pending_messages">Lås upp för att se väntande meddelanden</string>
   <string name="enter_backup_passphrase_dialog__backup_passphrase">Lösenord för säkerhetskopian</string>
   <string name="backup_enable_dialog__backups_will_be_saved_to_external_storage_and_encrypted_with_the_passphrase_below_you_must_have_this_passphrase_in_order_to_restore_a_backup">Säkerhetskopior kommer att sparas i extern lagring och krypteras med lösenordet nedanför. Du måste ange lösenordet för att återställa en säkerhetskopia.</string>
+  <string name="backup_enable_dialog__you_must_have_this_passphrase">Du måste ha detta lösenord för att återställa en säkerhetskopia.</string>
+  <string name="backup_enable_dialog__folder">Mapp</string>
   <string name="backup_enable_dialog__i_have_written_down_this_passphrase">Jag har skrivit ner lösenordet. Utan det kommer jag inte att kunna återställa en säkerhetskopia.</string>
   <string name="registration_activity__restore_backup">Återställ säkerhetskopia</string>
   <string name="registration_activity__skip">Hoppa över</string>
@@ -2148,6 +2202,8 @@ Tog emot meddelande för nyckelutbyte för ogiltig protokollversion.</string>
   <string name="BackupDialog_delete_backups">Ta bort säkerhetskopior?</string>
   <string name="BackupDialog_disable_and_delete_all_local_backups">Inaktivera och ta bort alla lokala säkerhetskopior?</string>
   <string name="BackupDialog_delete_backups_statement">Ta bort säkerhetskopior</string>
+  <string name="BackupDialog_to_enable_backups_choose_a_folder">Välj en mapp för att aktivera säkerhetskopior. Säkerhetskopior sparas på den här platsen.</string>
+  <string name="BackupDialog_choose_folder">Välj mapp</string>
   <string name="BackupDialog_copied_to_clipboard">Kopierade till urklipp</string>
   <string name="BackupDialog_enter_backup_passphrase_to_verify">Ange säkerhetskopians lösenord för att verifiera</string>
   <string name="BackupDialog_verify">Verifiera</string>
@@ -2157,6 +2213,12 @@ Tog emot meddelande för nyckelutbyte för ogiltig protokollversion.</string>
   <string name="ChatsPreferenceFragment_last_backup_s">Senaste säkerhetskopiering: %s</string>
   <string name="ChatsPreferenceFragment_in_progress">Pågår</string>
   <string name="LocalBackupJob_creating_backup">Skapar säkerhetskopia…</string>
+  <string name="LocalBackupJobApi29_backups_disabled">Säkerhetskopior inaktiverade.</string>
+  <string name="LocalBackupJobApi29_backup_failed">Säkerhetskopieringen misslyckades.</string>
+  <string name="LocalBackupJobApi29_your_backup_directory_has_been_deleted_or_moved">Din säkerhetskopieringsmapp har tagits bort eller flyttats.</string>
+  <string name="LocalBackupJobApi29_your_backup_file_is_too_large">Din säkerhetskopieringsfil är för stor för att lagras på den här volymen.</string>
+  <string name="LocalBackupJobApi29_there_is_not_enough_space">Det finns inte tillräckligt med utrymme för att lagra din säkerhetskopia.</string>
+  <string name="LocalBackupJobApi29_backup_failed_for_an_unknown_reason">Säkerhetskopieringen misslyckades av okänd anledning.</string>
   <string name="ProgressPreference_d_messages_so_far">%d meddelanden än så länge</string>
   <string name="RegistrationActivity_please_enter_the_verification_code_sent_to_s">Vänligen ange verifieringskoden som skickades till %s.</string>
   <string name="RegistrationActivity_wrong_number">Fel nummer</string>
@@ -2183,7 +2245,7 @@ Tog emot meddelande för nyckelutbyte för ogiltig protokollversion.</string>
   <string name="preferences_app_protection__pins_keep_information_stored_with_signal_encrypted">PIN-koder håller information lagrad med Signal krypterad så bara du kan komma åt den. Din profil, inställningar och kontakter kommer att återställas när du installerar om Signal.</string>
   <string name="preferences_app_protection__add_extra_security_by_requiring_your_signal_pin_to_register">Lägg till extra säkerhet genom att kräva din Signal PIN-kod för att registrera ditt telefonnummer med Signal igen.</string>
   <string name="preferences_app_protection__reminders_help_you_remember_your_pin">Påminnelser hjälper dig att memorera din PIN-kod eftersom den inte kan återställas. Du blir frågad mindre ofta med tiden.</string>
-  <string name="preferences_app_protection__turn_off">Slå av</string>
+  <string name="preferences_app_protection__turn_off">Inaktivera</string>
   <string name="preferences_app_protection__confirm_pin">Bekräfta PIN-kod</string>
   <string name="preferences_app_protection__confirm_your_signal_pin">Bekräfta din Signal PIN-kod</string>
   <string name="preferences_app_protection__make_sure_you_memorize_or_securely_store_your_pin">Se till att du lagrar din PIN-kod på ett säkert sätt, eftersom den inte kan återställas. Om du glömmer din PIN-kod kan du förlora data när du registrerar ditt Signal-konto igen.</string>
@@ -2216,7 +2278,7 @@ Tog emot meddelande för nyckelutbyte för ogiltig protokollversion.</string>
   <string name="RegistrationLockDialog_registration_lock_is_enabled_for_your_phone_number">Registreringslåset är aktiverat för ditt mobilnummer. För att hjälpa dig att memorera din PIN-kod för registreringslåset kommer Signal periodvis att be dig bekräfta den.</string>
   <string name="RegistrationLockDialog_i_forgot_my_pin">Jag har glömt min PIN-kod.</string>
   <string name="RegistrationLockDialog_forgotten_pin">Glömt PIN-koden?</string>
-  <string name="RegistrationLockDialog_registration_lock_helps_protect_your_phone_number_from_unauthorized_registration_attempts">Registreringslås hjälper till att skydda ditt mobilnummer från obehöriga registreringsförsök. Denna funktion kan när som helst stängas av under Signals integritetsskyddsinställningar.</string>
+  <string name="RegistrationLockDialog_registration_lock_helps_protect_your_phone_number_from_unauthorized_registration_attempts">Registreringslåset hjälper till att skydda ditt telefonnummer från obehöriga registreringsförsök. Denna funktion kan när som helst inaktiveras i dina integritetsskyddsinställningar för Signal</string>
   <string name="RegistrationLockDialog_registration_lock">Registreringslås</string>
   <string name="RegistrationLockDialog_enable">Aktivera</string>
   <string name="RegistrationLockDialog_the_registration_lock_pin_must_be_at_least_d_digits">PIN-koden för registreringslåset måste vara minst %d siffror.</string>
@@ -2268,5 +2330,12 @@ Tog emot meddelande för nyckelutbyte för ogiltig protokollversion.</string>
   <string name="GroupLinkBottomSheet_share">Dela</string>
   <string name="GroupLinkBottomSheet_copied_to_clipboard">Kopierade till urklipp</string>
   <string name="GroupLinkBottomSheet_the_link_is_not_currently_active">Länken är för närvarande inte aktiv</string>
+  <!--VoiceNotePlaybackPreparer-->
+  <string name="VoiceNotePlaybackPreparer__could_not_start_playback">Det gick inte att starta uppspelningen.</string>
+  <!--VoiceNoteMediaDescriptionCompatFactory-->
+  <string name="VoiceNoteMediaDescriptionCompatFactory__voice_message">Röstmeddelande · %1$s</string>
+  <string name="VoiceNoteMediaDescriptionCompatFactory__s_to_s">%1$s till %2$s</string>
+  <!--StorageUtil-->
+  <string name="StorageUtil__s_s">%1$s/%2$s</string>
   <!--EOF-->
 </resources>

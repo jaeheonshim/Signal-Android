@@ -93,6 +93,7 @@ import org.thoughtcrime.securesms.jobs.SmsSendJob;
 import org.thoughtcrime.securesms.linkpreview.LinkPreview;
 import org.thoughtcrime.securesms.linkpreview.LinkPreviewUtil;
 import org.thoughtcrime.securesms.logging.Log;
+import org.thoughtcrime.securesms.mms.AudioSlide;
 import org.thoughtcrime.securesms.mms.GlideRequests;
 import org.thoughtcrime.securesms.mms.ImageSlide;
 import org.thoughtcrime.securesms.mms.PartAuthority;
@@ -112,6 +113,7 @@ import org.thoughtcrime.securesms.util.DateUtils;
 import org.thoughtcrime.securesms.util.DynamicTheme;
 import org.thoughtcrime.securesms.util.InterceptableLongClickCopyLinkSpan;
 import org.thoughtcrime.securesms.util.LongClickMovementMethod;
+import org.thoughtcrime.securesms.util.MessageRecordUtil;
 import org.thoughtcrime.securesms.util.SearchUtil;
 import org.thoughtcrime.securesms.util.TextSecurePreferences;
 import org.thoughtcrime.securesms.util.ThemeUtil;
@@ -127,6 +129,7 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
+import java.util.Objects;
 import java.util.Set;
 
 import static org.thoughtcrime.securesms.util.ThemeUtil.isDarkTheme;
@@ -420,14 +423,17 @@ public class ConversationItem extends LinearLayout implements BindableConversati
       bodyBubble.getBackground().setColorFilter(defaultBubbleColor, PorterDuff.Mode.MULTIPLY);
       footer.setTextColor(ThemeUtil.getThemedColor(context, R.attr.conversation_item_sent_text_secondary_color));
       footer.setIconColor(ThemeUtil.getThemedColor(context, R.attr.conversation_item_sent_icon_color));
+      footer.setOnlyShowSendingStatus(false, messageRecord);
     } else if (messageRecord.isRemoteDelete() || (isViewOnceMessage(messageRecord) && ViewOnceUtil.isViewed((MmsMessageRecord) messageRecord))) {
       bodyBubble.getBackground().setColorFilter(ThemeUtil.getThemedColor(context, R.attr.conversation_item_reveal_viewed_background_color), PorterDuff.Mode.MULTIPLY);
       footer.setTextColor(ThemeUtil.getThemedColor(context, R.attr.conversation_item_sent_text_secondary_color));
       footer.setIconColor(ThemeUtil.getThemedColor(context, R.attr.conversation_item_sent_icon_color));
+      footer.setOnlyShowSendingStatus(messageRecord.isRemoteDelete(), messageRecord);
     } else {
       bodyBubble.getBackground().setColorFilter(messageRecord.getRecipient().getColor().toConversationColor(context), PorterDuff.Mode.MULTIPLY);
       footer.setTextColor(ThemeUtil.getThemedColor(context, R.attr.conversation_item_received_text_secondary_color));
       footer.setIconColor(ThemeUtil.getThemedColor(context, R.attr.conversation_item_received_text_secondary_color));
+      footer.setOnlyShowSendingStatus(false, messageRecord);
     }
 
     outliner.setColor(ThemeUtil.getThemedColor(getContext(), R.attr.conversation_item_sent_text_secondary_color));
@@ -652,7 +658,12 @@ public class ConversationItem extends LinearLayout implements BindableConversati
   {
     boolean showControls = !messageRecord.isFailed();
 
-    if (isViewOnceMessage(messageRecord)) {
+    if (eventListener != null && audioViewStub.resolved()) {
+      Log.d(TAG, "setMediaAttributes: unregistering voice note callbacks for audio slide " + audioViewStub.get().getAudioSlideUri());
+      eventListener.onUnregisterVoiceNoteCallbacks(audioViewStub.get().getPlaybackStateObserver());
+    }
+
+    if (isViewOnceMessage(messageRecord) && !messageRecord.isRemoteDelete()) {
       revealableStub.get().setVisibility(VISIBLE);
       if (mediaThumbnailStub.resolved()) mediaThumbnailStub.get().setVisibility(View.GONE);
       if (audioViewStub.resolved())      audioViewStub.get().setVisibility(View.GONE);
@@ -734,10 +745,16 @@ public class ConversationItem extends LinearLayout implements BindableConversati
       if (stickerStub.resolved())        stickerStub.get().setVisibility(View.GONE);
       if (revealableStub.resolved())     revealableStub.get().setVisibility(View.GONE);
 
-      //noinspection ConstantConditions
-      audioViewStub.get().setAudio(((MediaMmsMessageRecord) messageRecord).getSlideDeck().getAudioSlide(), showControls);
+      audioViewStub.get().setAudio(Objects.requireNonNull(((MediaMmsMessageRecord) messageRecord).getSlideDeck().getAudioSlide()), new AudioViewCallbacks(), showControls, false);
       audioViewStub.get().setDownloadClickListener(singleDownloadClickListener);
       audioViewStub.get().setOnLongClickListener(passthroughClickListener);
+
+      if (eventListener != null) {
+        Log.d(TAG, "setMediaAttributes: registered listener for audio slide " + audioViewStub.get().getAudioSlideUri());
+        eventListener.onRegisterVoiceNoteCallbacks(audioViewStub.get().getPlaybackStateObserver());
+      } else {
+        Log.w(TAG, "setMediaAttributes: could not register listener for audio slide " + audioViewStub.get().getAudioSlideUri());
+      }
 
       ViewUtil.updateLayoutParams(bodyText, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
       ViewUtil.updateLayoutParamsIfNonNull(groupSenderHolder, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
@@ -1521,7 +1538,7 @@ public class ConversationItem extends LinearLayout implements BindableConversati
 
     @Override
     public void onClick(@NonNull View widget) {
-      if (eventListener != null) {
+      if (eventListener != null && batchSelected.isEmpty()) {
         VibrateUtil.vibrateTick(context);
         eventListener.onGroupMemberClicked(mentionedRecipientId, conversationRecipient.get().requireGroupId());
       }
@@ -1529,6 +1546,40 @@ public class ConversationItem extends LinearLayout implements BindableConversati
 
     @Override
     public void updateDrawState(@NonNull TextPaint ds) { }
+  }
+
+  private final class AudioViewCallbacks implements AudioView.Callbacks {
+
+    @Override
+    public void onPlay(@NonNull Uri audioUri, double progress) {
+      if (eventListener == null) return;
+
+      eventListener.onVoiceNotePlay(audioUri, messageRecord.getId(), progress);
+    }
+
+    @Override
+    public void onPause(@NonNull Uri audioUri) {
+      if (eventListener == null) return;
+
+      eventListener.onVoiceNotePause(audioUri);
+    }
+
+    @Override
+    public void onSeekTo(@NonNull Uri audioUri, double progress) {
+      if (eventListener == null) return;
+
+      eventListener.onVoiceNoteSeekTo(audioUri, progress);
+    }
+
+    @Override
+    public void onStopAndReset(@NonNull Uri audioUri) {
+      throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public void onProgressUpdated(long durationMillis, long playheadMillis) {
+      footer.setAudioDuration(durationMillis, playheadMillis);
+    }
   }
 
   private void handleMessageApproval() {
